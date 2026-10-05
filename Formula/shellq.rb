@@ -33,6 +33,6 @@ class Shellq < Formula
     loaded = shell_output("zsh -fc 'source #{plugin} && print -r -- ${+functions[_shellq_workbench]}'")
     assert_equal "1", loaded.strip
     ui = pkgshare/"src/workbench-ui.tsx"
-    system formula_opt_bin("bun"), "-e", "await import(#{ui.to_s.inspect})"
+    system formula_opt_bin("bun")/"bun", "-e", "await import(#{ui.to_s.inspect})"
   end
 end
