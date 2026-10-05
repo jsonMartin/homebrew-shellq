@@ -14,7 +14,8 @@ class Shellq < Formula
 
   def install
     system "bun", "install", "--frozen-lockfile", "--production"
-    pkgshare.install "shellq.plugin.zsh", "src", "package.json", "bun.lock", "node_modules"
+    # tsconfig.json carries the @/ import alias and JSX settings Bun needs at runtime.
+    pkgshare.install "shellq.plugin.zsh", "src", "package.json", "bun.lock", "tsconfig.json", "node_modules"
   end
 
   def caveats
@@ -31,6 +32,7 @@ class Shellq < Formula
     plugin = pkgshare/"shellq.plugin.zsh"
     loaded = shell_output("zsh -fc 'source #{plugin} && print -r -- ${+functions[_shellq_workbench]}'")
     assert_equal "1", loaded.strip
-    assert_path_exists pkgshare/"node_modules/@opentui/core"
+    ui = pkgshare/"src/workbench-ui.tsx"
+    system formula_opt_bin("bun"), "-e", "await import(#{ui.to_s.inspect})"
   end
 end
