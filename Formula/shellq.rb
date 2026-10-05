@@ -1,8 +1,8 @@
 class Shellq < Formula
   desc "AI help for zsh at your prompt: commands, fixes and answers"
   homepage "https://github.com/jsonMartin/shellq"
-  url "https://github.com/jsonMartin/shellq/archive/refs/tags/v1.0.0-beta.1.tar.gz"
-  sha256 "204117377402f0a4da9212053c46d7bdb90ce1e717a8dd38a072a3728ac0fcc2"
+  url "https://github.com/jsonMartin/shellq/archive/refs/tags/v1.0.0-beta.2.tar.gz"
+  sha256 "44da4c48e9c498710d93e566000178f3c696523219f65c0f0ed063e43ac84784"
   license "MIT"
 
   depends_on "bun"
